@@ -38,7 +38,7 @@ class Base extends Controller
         $returnData['code'] = $code;
         $returnData['msg'] = $msg;
         $returnData['data'] = $data;
-        return json_encode($returnData, JSON_UNESCAPED_UNICODE);
+        die( json_encode($returnData, JSON_UNESCAPED_UNICODE));
     }
 
 }

@@ -31,6 +31,6 @@ class Index extends Base
             'name' => $paramsArray['username'],
             'age'  => $paramsArray['age']
         ];
-        return $this->returnJsonUtil(200,'',$data);
+        return  $this->returnJsonUtil(200,'操作成功',$data);
     }
 }
