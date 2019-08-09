@@ -1,7 +1,9 @@
 <?php
 namespace app\index\controller;
 
-class Index
+use app\common\controller\Base;
+
+class Index extends Base
 {
     public function index()
     {
@@ -12,5 +14,23 @@ class Index
     public function hello($name = 'ThinkPHP5')
     {
         return 'hello,' . $name;
+    }
+
+    public function test()
+    {
+        $paramsArray = input('post.');
+        if (!isset($paramsArray['username']))
+        {
+            return $this->returnJsonUtil(400,'用户名不能为空');
+        }elseif (!isset($paramsArray['age']))
+        {
+            return $this->returnJsonUtil(400,'年龄不能为空');
+        }
+
+        $data = [
+            'name' => $paramsArray['username'],
+            'age'  => $paramsArray['age']
+        ];
+        return $this->returnJsonUtil(200,'',$data);
     }
 }
