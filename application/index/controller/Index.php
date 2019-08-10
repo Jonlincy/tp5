@@ -53,6 +53,7 @@ class Index extends Base
             $uId = rand(0,1000);
             Gateway::bindUid($postParamsArray['client_id'],$uId);
             Gateway::joinGroup($postParamsArray['client_id'],$postParamsArray['group_type']);
+            return $this->returnJsonUtil(200,'绑定成功');
         }catch (\Exception $e)
         {
             return $this->returnJsonUtil(500,$e->getMessage());
