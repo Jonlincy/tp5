@@ -1,7 +1,6 @@
 <?php
 namespace app\index\controller;
 
-require '../../../vendor/GatewayClient/Gateway.php';
 use app\common\controller\Base;
 use GatewayClient\Gateway;
 
