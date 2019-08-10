@@ -37,10 +37,9 @@ class Index extends Base
 
     public function bindUid()
     {
-        // 设置GatewayWorker服务的Register服务ip和端口，请根据实际情况改成实际值(ip不能是0.0.0.0)
-        Gateway::$registerAddress = '127.0.0.1:1238';
-
         try{
+            // 设置GatewayWorker服务的Register服务ip和端口，请根据实际情况改成实际值(ip不能是0.0.0.0)
+            Gateway::$registerAddress = '127.0.0.1:1238';
             $postParamsArray = input('post.');
             if (!isset($postParamsArray['client_id']))
             {
