@@ -1,7 +1,9 @@
 <?php
 namespace app\index\controller;
 
+require '../../../vendor/GatewayClient/Gateway.php';
 use app\common\controller\Base;
+use GatewayClient\Gateway;
 
 class Index extends Base
 {
@@ -32,5 +34,32 @@ class Index extends Base
             'age'  => $paramsArray['age']
         ];
         return  $this->returnJsonUtil(200,'操作成功',$data);
+    }
+
+    public function bindUid()
+    {
+        // 设置GatewayWorker服务的Register服务ip和端口，请根据实际情况改成实际值(ip不能是0.0.0.0)
+        Gateway::$registerAddress = '127.0.0.1:1238';
+
+        try{
+            $postParamsArray = input('post.');
+            if (!isset($postParamsArray['client_id']))
+            {
+                return $this->returnJsonUtil(400,'参数client_id不能为空');
+            }
+
+            if (!isset($postParamsArray['group_type']))
+            {
+                return $this->returnJsonUtil(400,'参数group_type不能为空');
+            }
+            $uId = rand(0,1000);
+            Gateway::bindUid($postParamsArray['client_id'],$uId);
+            Gateway::joinGroup($postParamsArray['client_id'],$postParamsArray['group_type']);
+        }catch (\Exception $e)
+        {
+            return $this->returnJsonUtil(500,$e->getMessage());
+        }
+
+        return $this->returnJsonUtil(400,'其他错误');
     }
 }
