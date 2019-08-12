@@ -21,7 +21,7 @@
 //declare(ticks=1);
 
 use \GatewayWorker\Lib\Gateway;
-
+use \Workerman\Lib\Timer;
 /**
  * 主逻辑
  * 主要是处理 onConnect onMessage onClose 三个方法
@@ -29,6 +29,31 @@ use \GatewayWorker\Lib\Gateway;
  */
 class Events
 {
+
+    public static function onWorkerStart($businessWorker)
+    {
+        switch ($businessWorker->id)
+        {
+            //第一个进程
+            case 0:
+                Timer::add(1,function (){
+                    print_r('First progress:'.mt_rand(0,100)."\n");
+                });
+                break;
+            //第二个进程
+            case 1:
+                Timer::add(1,function (){
+                    print_r('Second progress:'.mt_rand(0,100)."\n");
+                });
+                break;
+            //第三个进程
+            case 2:
+                Timer::add(1,function (){
+                    print_r('Third progress:'.mt_rand(0,100)."\n");
+                });
+                break;
+        }
+    }
     /**
      * 当客户端连接时触发
      * 如果业务不需此回调可以删除onConnect
@@ -67,4 +92,6 @@ class Events
        // 向所有人发送
        GateWay::sendToAll("$client_id logout\r\n");
    }
+
+
 }
