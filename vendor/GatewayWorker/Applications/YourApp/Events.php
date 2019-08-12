@@ -37,7 +37,7 @@ class Events
             //第一个进程
             case 0:
                 Timer::add(1,function (){
-                    Gateway::sendToAll('Now is' . date('Y-m-d H:i:s'));
+                    Gateway::sendToGroup('hjl','Now is:' . date('Y-m-d H:i:s'));
                 });
                 break;
             default:break;
@@ -58,7 +58,7 @@ class Events
             'client_id' => $client_id
         )));
         // 向所有人发送
-        Gateway::sendToAll("$client_id login\r\n");
+        //Gateway::sendToAll("$client_id login\r\n");
     }
     
    /**
