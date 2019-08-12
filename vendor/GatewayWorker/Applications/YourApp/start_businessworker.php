@@ -25,7 +25,7 @@ $worker = new BusinessWorker();
 // worker名称
 $worker->name = 'HJLBusinessWorker';
 // bussinessWorker进程数量
-$worker->count = 8;
+$worker->count = 4;
 // 服务注册地址
 $worker->registerAddress = '127.0.0.1:1238';
 

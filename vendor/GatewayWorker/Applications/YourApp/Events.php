@@ -37,51 +37,10 @@ class Events
             //第一个进程
             case 0:
                 Timer::add(1,function (){
-                    print_r('First progress:'.mt_rand(0,100)."\n");
+                    Gateway::sendToAll('Now is' . date('Y-m-d H:i:s'));
                 });
                 break;
-            //第二个进程
-            case 1:
-                Timer::add(1,function (){
-                    print_r('Second progress:'.mt_rand(0,100)."\n");
-                });
-                break;
-            //第三个进程
-            case 2:
-                Timer::add(1,function (){
-                    print_r('Third progress:'.mt_rand(0,100)."\n");
-                });
-                break;
-            //第四个进程
-            case 3:
-                Timer::add(1,function (){
-                    print_r('Fourth progress:'.mt_rand(0,100)."\n");
-                });
-                break;
-            //第五个进程
-            case 4:
-                Timer::add(1,function (){
-                    print_r('Five progress:'.mt_rand(0,100)."\n");
-                });
-                break;
-            //第六个进程
-            case 5:
-                Timer::add(1,function (){
-                    print_r('Six progress:'.mt_rand(0,100)."\n");
-                });
-                break;
-            //第七个进程
-            case 6:
-                Timer::add(1,function (){
-                    print_r('Severn progress:'.mt_rand(0,100)."\n");
-                });
-                break;
-            //第八个进程
-            case 7:
-                Timer::add(1,function (){
-                    print_r('Eight progress:'.mt_rand(0,100)."\n");
-                });
-                break;
+            default:break;
         }
     }
     /**
