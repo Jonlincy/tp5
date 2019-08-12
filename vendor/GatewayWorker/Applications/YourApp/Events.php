@@ -37,7 +37,7 @@ class Events
             //第一个进程
             case 0:
                 Timer::add(1,function (){
-                    Gateway::sendToGroup('hjl','Now is:' . date('Y-m-d H:i:s'));
+                    Gateway::sendToGroup('hjl', date('Y-m-d H:i:s'));
                 });
                 break;
             default:break;
