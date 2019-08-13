@@ -1,7 +1,7 @@
 <?php
 namespace app\common\model;
 
-use think\model as BaseModel;
+use think\Model as BaseModel;
 class TestModel extends BaseModel
 {
     protected $name = 'test';
